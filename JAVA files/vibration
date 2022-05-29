@@ -1,0 +1,45 @@
+package com.example.mynetcamproject;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Vibrator;
+import android.view.View;
+import android.widget.Button;
+
+public class Vibrate extends AppCompatActivity {
+    Button b1,b2;
+    Vibrator v1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_vibrate);
+        b1=(Button)findViewById(R.id.button42);
+        b2=(Button)findViewById(R.id.button43);
+        v1=(Vibrator)getSystemService(VIBRATOR_SERVICE);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Build.VERSION.SDK_INT>26)
+                {
+                    v1.vibrate(8000);
+                }
+                else {
+                    v1.vibrate(8000);
+                }
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent u=new Intent(Vibrate.this,Sixth.class);
+                startActivity(u);
+                finish();
+            }
+        });
+
+    }
+}
